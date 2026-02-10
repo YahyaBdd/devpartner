@@ -1,0 +1,126 @@
+---
+const whatsappBase = 'https://wa.me/212702002742';
+---
+
+<nav
+  class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-slate-100"
+  id="navbar"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+      <!-- Logo -->
+      <div
+        class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+        id="logo-home"
+      >
+        <div
+          class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+        >
+          &lt;/&gt;
+        </div>
+        <span class="font-bold text-xl tracking-tight text-slate-900"
+          >DevPartner<span class="text-blue-500">.ma</span></span
+        >
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a
+          href="#benefits"
+          class="text-slate-600 hover:text-blue-600 font-medium transition"
+          >Why Morocco?</a
+        >
+        <a
+          href="#services"
+          class="text-slate-600 hover:text-blue-600 font-medium transition"
+          >Services</a
+        >
+        <a
+          href="#portfolio"
+          class="text-slate-600 hover:text-blue-600 font-medium transition"
+          >Work</a
+        >
+        <a
+          href="#process"
+          class="text-slate-600 hover:text-blue-600 font-medium transition"
+          >Process</a
+        >
+        <a
+          href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20partner%20with%20you%20for%20my%20agency%27s%20development%20needs`}
+          target="_blank"
+          class="px-5 py-2.5 bg-slate-900 text-white font-semibold rounded-full hover:bg-blue-600 transition shadow-lg shadow-blue-500/20"
+        >
+          Partner With Me
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button
+          id="mobile-menu-btn"
+          class="text-slate-600 hover:text-slate-900 focus:outline-none"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full"
+  >
+    <div class="px-4 pt-2 pb-6 space-y-1">
+      <a
+        href="#benefits"
+        class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 rounded-md"
+        >Why Morocco?</a
+      >
+      <a
+        href="#services"
+        class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 rounded-md"
+        >Services</a
+      >
+      <a
+        href="#portfolio"
+        class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 rounded-md"
+        >Work</a
+      >
+      <a
+        href="#process"
+        class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 rounded-md"
+        >Process</a
+      >
+      <a
+        href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20you`}
+        target="_blank"
+        class="block px-3 py-3 text-base font-bold text-blue-600 hover:bg-blue-50 rounded-md"
+        >Book Discovery Call</a
+      >
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const logo = document.getElementById('logo-home');
+  const navbar = document.getElementById('navbar');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  logo?.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar?.classList.add('shadow-md');
+    } else {
+      navbar?.classList.remove('shadow-md');
+    }
+  });
+</script>

@@ -1,0 +1,143 @@
+---
+const projects = [
+  {
+    image: '/visionyse.png',
+    badge: 'SaaS',
+    badgeClass:
+      'bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-600 border border-slate-200',
+    location: 'Marseille, France',
+    title: 'Visionyze',
+    description:
+      'I worked with Visionyze to develop a training center management SAAS for one of their clients',
+    confidential: true,
+    links: [],
+    tech: ['NodeJS', 'NextJS', 'PostgresDB'],
+  },
+  {
+    image: '/nuremberg.png',
+    badge: 'Partnership',
+    badgeClass:
+      'bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white border-2 border-yellow-300 shadow-lg shadow-yellow-500/50 animate-pulse',
+    badgeIcon: true,
+    location: 'Nürnberg, Germany',
+    title: 'Webdesign Agentur Nürnberg',
+    description:
+      "Johannes was one of my first and loyal clients, and we've worked so far on over 9 projects",
+    confidential: false,
+    links: [
+      { url: 'https://autohaus-stahmer.de/', label: 'autohaus-stahmer.de' },
+      { url: 'https://www.pgl-obermeitingen.de/', label: 'pgl-obermeitingen.de' },
+      { url: 'https://orso-gmbh.de/', label: 'orso-gmbh.de' },
+      { url: 'https://sb-nbg.de', label: 'sb-nbg.de' },
+    ],
+    tech: ['Wordpress', 'Shopify', 'PHP'],
+  },
+  {
+    image: '/ultrapc.png',
+    badge: 'e-commerce',
+    badgeClass:
+      'bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-600 border border-slate-200',
+    location: 'Marrakesh, Morocco',
+    title: 'ultrapc.ma',
+    description:
+      "UltraPC is one of Morocco's largest gaming PC suppliers, and I had the pleasure of working on their store.",
+    confidential: false,
+    links: [{ url: 'https://www.ultrapc.ma/', label: 'ultrapc.ma' }],
+    tech: ['Laravel', 'PrestaShop', 'Stripe'],
+  },
+];
+---
+
+<section id="portfolio" class="py-20 bg-white border-t border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+      <div class="max-w-2xl">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 mb-4"
+        >
+          <span
+            class="text-slate-500 text-xs font-bold uppercase tracking-widest"
+            >White Label Portfolio</span
+          >
+        </div>
+        <h2 class="text-3xl font-bold text-slate-900 tracking-tight">
+          Recent Work Deliverables
+        </h2>
+        <p class="text-slate-600 mt-4 text-lg">
+          Here are examples of recent systems built for agencies arround Europe.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        projects.map((project) => (
+          <div class="group cursor-pointer">
+            <div class="relative overflow-hidden rounded-xl border border-slate-200 aspect-video mb-4 bg-slate-50">
+              <div class="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition duration-500">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="rounded-lg shadow-lg border border-slate-100"
+                />
+              </div>
+              <div class={`absolute top-4 right-4 ${project.badgeClass}`}>
+                {project.badgeIcon ? (
+                  <span class="flex items-center gap-1">
+                    <i
+                      class="fas fa-star animate-spin"
+                      style="animation-duration: 2s;"
+                    />
+                    {project.badge}
+                    <i class="fas fa-sparkles" />
+                  </span>
+                ) : (
+                  project.badge
+                )}
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
+              <i class="fas fa-map-pin text-blue-500" />
+              <span>{project.location}</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+              {project.title}
+            </h3>
+            <p class="text-slate-500 text-sm mt-2 mb-3">
+              {project.description}
+            </p>
+
+            {project.confidential ? (
+              <div
+                class="flex items-center gap-2 text-xs text-slate-400 mb-3 cursor-not-allowed"
+                title="Confidential project"
+              >
+                <i class="fas fa-lock" />
+                <span class="italic">Confidential</span>
+              </div>
+            ) : (
+              <div class="flex flex-wrap gap-2 text-xs mb-3">
+                {project.links.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    class="flex items-center gap-1 text-blue-500 hover:text-blue-600 transition"
+                  >
+                    <i class="fas fa-external-link-alt" />
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            <div class="flex gap-2 text-xs font-mono text-slate-400">
+              {project.tech.map((t) => (
+                <span class="bg-slate-100 px-2 py-1 rounded">{t}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

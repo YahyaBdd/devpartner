@@ -1,0 +1,78 @@
+---
+const categories = [
+  {
+    icon: 'fab fa-react',
+    iconBg: 'bg-blue-50 text-blue-600',
+    hoverBorder: 'hover:border-blue-300',
+    title: 'Frontend',
+    items: ['React.js / Next.js', 'Vue.js / Nuxt', 'Tailwind CSS / SCSS', 'TypeScript'],
+  },
+  {
+    icon: 'fab fa-node-js',
+    iconBg: 'bg-green-50 text-green-600',
+    hoverBorder: 'hover:border-green-300',
+    title: 'Backend',
+    items: [
+      'Node.js / Express',
+      'PHP / Laravel',
+      'Python / Django',
+      'API Development (REST/GraphQL)',
+    ],
+  },
+  {
+    icon: 'fas fa-server',
+    iconBg: 'bg-orange-50 text-orange-600',
+    hoverBorder: 'hover:border-orange-300',
+    title: 'Infrastructure',
+    items: ['PostgreSQL / MongoDB', 'AWS / DigitalOcean', 'Docker / CI/CD Pipelines', 'Firebase'],
+  },
+  {
+    icon: 'fas fa-shopping-cart',
+    iconBg: 'bg-purple-50 text-purple-600',
+    hoverBorder: 'hover:border-purple-300',
+    title: 'Platforms',
+    items: [
+      'WordPress (Custom Themes)',
+      'Shopify (Liquid)',
+      'Headless CMS (Strapi)',
+      'Stripe Integration',
+    ],
+  },
+];
+---
+
+<section id="services" class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+        Full Stack Capabilities
+      </h2>
+      <p class="text-slate-600">
+        Modern, scalable, and clean code that your internal team will
+        appreciate.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        categories.map((cat) => (
+          <div
+            class={`bg-white p-6 rounded-xl shadow-sm border border-slate-200 ${cat.hoverBorder} transition`}
+          >
+            <div
+              class={`w-12 h-12 ${cat.iconBg} rounded-lg flex items-center justify-center mb-4 text-2xl`}
+            >
+              <i class={cat.icon} />
+            </div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">{cat.title}</h3>
+            <ul class="text-slate-600 space-y-2 text-sm">
+              {cat.items.map((item) => (
+                <li>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

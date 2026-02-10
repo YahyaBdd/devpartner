@@ -1,0 +1,50 @@
+---
+const faqs = [
+  {
+    question: 'How is your English?',
+    answer:
+      "Fluent. I handle complex technical documentation and daily voice stand-ups with ease. No communication barriers. I've worked with UK and US teams for over 5 years.",
+  },
+  {
+    question: 'How do payments work?',
+    answer:
+      'I operate as a registered LTD company. You receive a proper invoice compatible with European VAT/Accounting. Payments via SEPA Bank Transfer or Stripe.',
+  },
+  {
+    question: 'Do you sign NDAs?',
+    answer:
+      'Absolutely. Your clients will never know I exist. I am white-label by default and happy to sign your standard NDA before we discuss any client specifics.',
+  },
+  {
+    question: 'What if I need to scale up quickly?',
+    answer:
+      'I have a network of vetted senior developers here in Morocco that I can bring onto projects if we need to scale velocity, managing them as a lead so you still have a single point of contact.',
+  },
+];
+---
+
+<section id="faq" class="py-24 border-t border-slate-100 bg-white">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <h2 class="text-3xl font-bold mb-12 text-center tracking-tight">
+      Common Questions
+    </h2>
+
+    <div class="space-y-4">
+      {
+        faqs.map((faq) => (
+          <details class="group bg-slate-50 p-6 rounded-xl border border-slate-200 open:ring-2 open:ring-blue-500/20 open:bg-white transition-all duration-300">
+            <summary class="flex justify-between items-center font-bold cursor-pointer text-slate-900 text-lg">
+              <span>{faq.question}</span>
+              <span class="transition transform group-open:rotate-180 text-blue-600">
+                <i class="fas fa-chevron-down" />
+              </span>
+            </summary>
+            <div class="text-slate-600 mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-fadeIn">
+              {faq.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

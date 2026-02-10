@@ -1,0 +1,54 @@
+---
+const testimonials = [
+  {
+    initials: 'JF',
+    name: 'Johannes F.',
+    role: 'Agency Owner, Germany',
+    quote:
+      '"I was incredibly impressed with Yahya\'s work on my WordPress project. His expertise in PHP and JavaScript was evident in the quality of work. What started as a one-off project turned into an ongoing partnership due to his outstanding performance. Yahya consistently met deadlines with great work quality. Highly recommend for anyone seeking a reliable and skilled web developer!"',
+  },
+  {
+    initials: 'HB',
+    name: 'Hassan B.',
+    role: 'Business Owner',
+    quote:
+      '"I had the pleasure of working with Yahya. He did a great job creating the website from scratch and providing help and several alternatives for the technical aspects of the website. With flawless communication, timely delivery, and flexibility to changes, I highly recommend Yahya to anybody interested in getting a professional-looking website."',
+  },
+];
+---
+
+<section class="py-20 bg-slate-50 border-t border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      class="text-3xl font-bold text-center text-slate-900 mb-12 tracking-tight"
+    >
+      Trusted by Agency Owners Across Europe
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {
+        testimonials.map((t) => (
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+            <div class="flex text-yellow-400 text-sm mb-4">
+              <i class="fas fa-star" />
+              <i class="fas fa-star" />
+              <i class="fas fa-star" />
+              <i class="fas fa-star" />
+              <i class="fas fa-star" />
+            </div>
+            <p class="text-slate-600 mb-6 leading-relaxed italic">{t.quote}</p>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold">
+                {t.initials}
+              </div>
+              <div>
+                <div class="text-sm font-bold text-slate-900">{t.name}</div>
+                <div class="text-xs text-slate-500">{t.role}</div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
