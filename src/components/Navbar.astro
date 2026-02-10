@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
 const whatsappBase = 'https://wa.me/212702002742';
 ---
 
@@ -28,23 +29,29 @@ const whatsappBase = 'https://wa.me/212702002742';
         <a
           href="#benefits"
           class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.whyMorocco"
           >Why Morocco?</a
         >
         <a
           href="#services"
           class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.services"
           >Services</a
         >
         <a
           href="#portfolio"
           class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.work"
           >Work</a
         >
         <a
           href="#process"
           class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.process"
           >Process</a
         >
+        <!-- Language Switcher -->
+        <LanguageSwitcher />
         <!-- Dark Mode Toggle -->
         <button
           id="theme-toggle"
@@ -58,6 +65,7 @@ const whatsappBase = 'https://wa.me/212702002742';
           href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20partner%20with%20you%20for%20my%20agency%27s%20development%20needs`}
           target="_blank"
           class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-full hover:bg-blue-600 dark:hover:bg-blue-400 dark:hover:text-white transition shadow-lg shadow-blue-500/20"
+          data-i18n="nav.partnerWithMe"
         >
           Partner With Me
         </a>
@@ -84,23 +92,34 @@ const whatsappBase = 'https://wa.me/212702002742';
       <a
         href="#benefits"
         class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.whyMorocco"
         >Why Morocco?</a
       >
       <a
         href="#services"
         class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.services"
         >Services</a
       >
       <a
         href="#portfolio"
         class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.work"
         >Work</a
       >
       <a
         href="#process"
         class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.process"
         >Process</a
       >
+      <!-- Mobile Language Switcher -->
+      <div class="px-3 py-3 flex items-center gap-3">
+        <i class="fas fa-globe text-slate-500"></i>
+        <button data-lang-btn="en" class="flex items-center gap-1.5 px-2 py-1 text-sm font-bold rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300"><span class="fi fi-gb"></span> EN</button>
+        <button data-lang-btn="nl" class="flex items-center gap-1.5 px-2 py-1 text-sm font-bold rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300"><span class="fi fi-nl"></span> NL</button>
+        <button data-lang-btn="de" class="flex items-center gap-1.5 px-2 py-1 text-sm font-bold rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300"><span class="fi fi-de"></span> DE</button>
+      </div>
       <!-- Mobile Dark Mode Toggle -->
       <button
         id="theme-toggle-mobile"
@@ -108,13 +127,14 @@ const whatsappBase = 'https://wa.me/212702002742';
       >
         <i class="fas fa-moon dark:hidden"></i>
         <i class="fas fa-sun hidden dark:inline"></i>
-        <span class="dark:hidden">Dark Mode</span>
-        <span class="hidden dark:inline">Light Mode</span>
+        <span class="dark:hidden" data-i18n="nav.darkMode">Dark Mode</span>
+        <span class="hidden dark:inline" data-i18n="nav.lightMode">Light Mode</span>
       </button>
       <a
         href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20you`}
         target="_blank"
         class="block px-3 py-3 text-base font-bold text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-md"
+        data-i18n="nav.bookDiscoveryCall"
         >Book Discovery Call</a
       >
     </div>
@@ -151,4 +171,24 @@ const whatsappBase = 'https://wa.me/212702002742';
 
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
   document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+
+  // Mobile language switcher buttons
+  const mobileLangBtns = document.querySelectorAll('#mobile-menu [data-lang-btn]');
+  const flagClasses: Record<string, string> = { en: 'fi fi-gb', nl: 'fi fi-nl', de: 'fi fi-de' };
+  mobileLangBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang-btn');
+      if (lang && (window as any).__i18n) {
+        (window as any).__i18n.setLanguage(lang);
+        // Also update the desktop language switcher display
+        const currentFlag = document.getElementById('lang-current-flag');
+        const currentCode = document.getElementById('lang-current-code');
+        if (currentFlag) {
+          currentFlag.className = flagClasses[lang] || 'fi fi-gb';
+          currentFlag.style.fontSize = '1rem';
+        }
+        if (currentCode) currentCode.textContent = lang.toUpperCase();
+      }
+    });
+  });
 </script>

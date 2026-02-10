@@ -3,14 +3,18 @@ const testimonials = [
   {
     initials: 'JF',
     name: 'Johannes F.',
+    roleKey: 'testimonials.t1.role',
     role: 'Agency Owner, Germany',
+    quoteKey: 'testimonials.t1.quote',
     quote:
       '"I was incredibly impressed with Yahya\'s work on my WordPress project. His expertise in PHP and JavaScript was evident in the quality of work. What started as a one-off project turned into an ongoing partnership due to his outstanding performance. Yahya consistently met deadlines with great work quality. Highly recommend for anyone seeking a reliable and skilled web developer!"',
   },
   {
     initials: 'HB',
     name: 'Hassan B.',
+    roleKey: 'testimonials.t2.role',
     role: 'Business Owner',
+    quoteKey: 'testimonials.t2.quote',
     quote:
       '"I had the pleasure of working with Yahya. He did a great job creating the website from scratch and providing help and several alternatives for the technical aspects of the website. With flawless communication, timely delivery, and flexibility to changes, I highly recommend Yahya to anybody interested in getting a professional-looking website."',
   },
@@ -21,6 +25,7 @@ const testimonials = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2
       class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-12 tracking-tight"
+      data-i18n="testimonials.title"
     >
       Trusted by Agency Owners Across Europe
     </h2>
@@ -36,14 +41,14 @@ const testimonials = [
               <i class="fas fa-star" />
               <i class="fas fa-star" />
             </div>
-            <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed italic">{t.quote}</p>
+            <p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed italic" data-i18n={t.quoteKey}>{t.quote}</p>
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-300 font-bold">
                 {t.initials}
               </div>
               <div>
                 <div class="text-sm font-bold text-slate-900 dark:text-white">{t.name}</div>
-                <div class="text-xs text-slate-500 dark:text-slate-400">{t.role}</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400" data-i18n={t.roleKey}>{t.role}</div>
               </div>
             </div>
           </div>

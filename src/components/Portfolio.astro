@@ -7,6 +7,7 @@ const projects = [
       'bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-600 border border-slate-200',
     location: 'Marseille, France',
     title: 'Visionyze',
+    descKey: 'portfolio.project1.description',
     description:
       'I worked with Visionyze to develop a training center management SAAS for one of their clients',
     confidential: true,
@@ -21,6 +22,7 @@ const projects = [
     badgeIcon: true,
     location: 'Nürnberg, Germany',
     title: 'Webdesign Agentur Nürnberg',
+    descKey: 'portfolio.project2.description',
     description:
       "Johannes was one of my first and loyal clients, and we've worked so far on over 9 projects",
     confidential: false,
@@ -39,6 +41,7 @@ const projects = [
       'bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-600 border border-slate-200',
     location: 'Marrakesh, Morocco',
     title: 'ultrapc.ma',
+    descKey: 'portfolio.project3.description',
     description:
       "UltraPC is one of Morocco's largest gaming PC suppliers, and I had the pleasure of working on their store.",
     confidential: false,
@@ -57,13 +60,14 @@ const projects = [
         >
           <span
             class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest"
+            data-i18n="portfolio.badge"
             >White Label Portfolio</span
           >
         </div>
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="portfolio.title">
           Recent Work Deliverables
         </h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg" data-i18n="portfolio.subtitle">
           Here are examples of recent systems built for agencies arround Europe.
         </p>
       </div>
@@ -103,7 +107,7 @@ const projects = [
             <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
               {project.title}
             </h3>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 mb-3">
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 mb-3" data-i18n={project.descKey}>
               {project.description}
             </p>
 
@@ -113,7 +117,7 @@ const projects = [
                 title="Confidential project"
               >
                 <i class="fas fa-lock" />
-                <span class="italic">Confidential</span>
+                <span class="italic" data-i18n="portfolio.confidential">Confidential</span>
               </div>
             ) : (
               <div class="flex flex-wrap gap-2 text-xs mb-3">

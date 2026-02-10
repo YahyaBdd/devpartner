@@ -1,0 +1,99 @@
+---
+/**
+ * LanguageSwitcher.astro
+ * Dropdown language picker for the navbar.
+ * Shows SVG flag icons via flag-icons CSS library + language code.
+ */
+const languages = [
+  { code: 'en', label: 'English', flagClass: 'fi fi-gb' },
+  { code: 'nl', label: 'Nederlands', flagClass: 'fi fi-nl' },
+  { code: 'de', label: 'Deutsch', flagClass: 'fi fi-de' },
+];
+---
+
+<div class="relative" id="lang-switcher">
+  <button
+    id="lang-toggle"
+    class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+    aria-label="Change language"
+    aria-expanded="false"
+  >
+    <span id="lang-current-flag" class="fi fi-gb" style="font-size:1rem;"></span>
+    <span id="lang-current-code" class="uppercase text-xs font-bold">EN</span>
+    <i class="fas fa-chevron-down text-[10px] ml-0.5 transition-transform" id="lang-chevron"></i>
+  </button>
+
+  <div
+    id="lang-dropdown"
+    class="hidden absolute right-0 mt-2 w-40 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50 animate-fadeIn"
+  >
+    {languages.map((lang) => (
+      <button
+        data-lang-btn={lang.code}
+        class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition text-left"
+      >
+        <span class={lang.flagClass} style="font-size:1rem;"></span>
+        <span>{lang.label}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  function initLangSwitcher() {
+    const toggle = document.getElementById('lang-toggle');
+    const dropdown = document.getElementById('lang-dropdown');
+    const chevron = document.getElementById('lang-chevron');
+    const currentFlag = document.getElementById('lang-current-flag');
+    const currentCode = document.getElementById('lang-current-code');
+
+    const flagClasses: Record<string, string> = { en: 'fi fi-gb', nl: 'fi fi-nl', de: 'fi fi-de' };
+
+    function setFlagIcon(el: HTMLElement, lang: string) {
+      el.className = (flagClasses[lang] || 'fi fi-gb');
+      el.style.fontSize = '1rem';
+    }
+
+    // Toggle dropdown
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !dropdown?.classList.contains('hidden');
+      dropdown?.classList.toggle('hidden');
+      chevron?.classList.toggle('rotate-180');
+      toggle?.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close on outside click
+    document.addEventListener('click', () => {
+      dropdown?.classList.add('hidden');
+      chevron?.classList.remove('rotate-180');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+
+    // Language buttons
+    document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang-btn');
+        if (lang && (window as any).__i18n) {
+          (window as any).__i18n.setLanguage(lang);
+          if (currentFlag) setFlagIcon(currentFlag, lang);
+          if (currentCode) currentCode.textContent = lang.toUpperCase();
+        }
+        dropdown?.classList.add('hidden');
+        chevron?.classList.remove('rotate-180');
+      });
+    });
+
+    // Set initial display from detected language
+    const currentLang = (window as any).__i18n?.getLanguage() || 'en';
+    if (currentFlag) setFlagIcon(currentFlag, currentLang);
+    if (currentCode) currentCode.textContent = currentLang.toUpperCase();
+  }
+
+  // Run on DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLangSwitcher);
+  } else {
+    initLangSwitcher();
+  }
+</script>

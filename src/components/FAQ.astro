@@ -1,22 +1,30 @@
 ---
 const faqs = [
   {
+    questionKey: 'faq.q1.question',
     question: 'How is your English?',
+    answerKey: 'faq.q1.answer',
     answer:
       "Fluent. I handle complex technical documentation and daily voice stand-ups with ease. No communication barriers. I've worked with UK and US teams for over 5 years.",
   },
   {
+    questionKey: 'faq.q2.question',
     question: 'How do payments work?',
+    answerKey: 'faq.q2.answer',
     answer:
       'I operate as a registered LTD company. You receive a proper invoice compatible with European VAT/Accounting. Payments via SEPA Bank Transfer or Stripe.',
   },
   {
+    questionKey: 'faq.q3.question',
     question: 'Do you sign NDAs?',
+    answerKey: 'faq.q3.answer',
     answer:
       'Absolutely. Your clients will never know I exist. I am white-label by default and happy to sign your standard NDA before we discuss any client specifics.',
   },
   {
+    questionKey: 'faq.q4.question',
     question: 'What if I need to scale up quickly?',
+    answerKey: 'faq.q4.answer',
     answer:
       'I have a network of vetted senior developers here in Morocco that I can bring onto projects if we need to scale velocity, managing them as a lead so you still have a single point of contact.',
   },
@@ -25,7 +33,7 @@ const faqs = [
 
 <section id="faq" class="py-24 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <h2 class="text-3xl font-bold mb-12 text-center tracking-tight dark:text-white">
+    <h2 class="text-3xl font-bold mb-12 text-center tracking-tight dark:text-white" data-i18n="faq.title">
       Common Questions
     </h2>
 
@@ -34,12 +42,12 @@ const faqs = [
         faqs.map((faq) => (
           <details class="group bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 open:ring-2 open:ring-blue-500/20 open:bg-white dark:open:bg-slate-800 transition-all duration-300">
             <summary class="flex justify-between items-center font-bold cursor-pointer text-slate-900 dark:text-white text-lg">
-              <span>{faq.question}</span>
+              <span data-i18n={faq.questionKey}>{faq.question}</span>
               <span class="transition transform group-open:rotate-180 text-blue-600">
                 <i class="fas fa-chevron-down" />
               </span>
             </summary>
-            <div class="text-slate-600 dark:text-slate-300 mt-4 leading-relaxed border-t border-slate-100 dark:border-slate-700 pt-4 animate-fadeIn">
+            <div class="text-slate-600 dark:text-slate-300 mt-4 leading-relaxed border-t border-slate-100 dark:border-slate-700 pt-4 animate-fadeIn" data-i18n={faq.answerKey}>
               {faq.answer}
             </div>
           </details>
