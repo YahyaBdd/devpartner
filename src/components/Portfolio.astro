@@ -48,22 +48,22 @@ const projects = [
 ];
 ---
 
-<section id="portfolio" class="py-20 bg-white border-t border-slate-100">
+<section id="portfolio" class="py-20 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row justify-between items-end mb-12">
       <div class="max-w-2xl">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 mb-4"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mb-4"
         >
           <span
-            class="text-slate-500 text-xs font-bold uppercase tracking-widest"
+            class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest"
             >White Label Portfolio</span
           >
         </div>
-        <h2 class="text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
           Recent Work Deliverables
         </h2>
-        <p class="text-slate-600 mt-4 text-lg">
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">
           Here are examples of recent systems built for agencies arround Europe.
         </p>
       </div>
@@ -73,12 +73,12 @@ const projects = [
       {
         projects.map((project) => (
           <div class="group cursor-pointer">
-            <div class="relative overflow-hidden rounded-xl border border-slate-200 aspect-video mb-4 bg-slate-50">
+            <div class="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 aspect-video mb-4 bg-slate-50 dark:bg-slate-800">
               <div class="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition duration-500">
                 <img
                   src={project.image}
                   alt={project.title}
-                  class="rounded-lg shadow-lg border border-slate-100"
+                  class="rounded-lg shadow-lg border border-slate-100 dark:border-slate-700"
                 />
               </div>
               <div class={`absolute top-4 right-4 ${project.badgeClass}`}>
@@ -100,10 +100,10 @@ const projects = [
               <i class="fas fa-map-pin text-blue-500" />
               <span>{project.location}</span>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
               {project.title}
             </h3>
-            <p class="text-slate-500 text-sm mt-2 mb-3">
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 mb-3">
               {project.description}
             </p>
 
@@ -132,7 +132,7 @@ const projects = [
 
             <div class="flex gap-2 text-xs font-mono text-slate-400">
               {project.tech.map((t) => (
-                <span class="bg-slate-100 px-2 py-1 rounded">{t}</span>
+                <span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{t}</span>
               ))}
             </div>
           </div>

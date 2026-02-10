@@ -36,10 +36,22 @@ const { title, description } = Astro.props;
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
       is:inline></script>
+
+    <!-- Dark Mode Detection (runs before paint to prevent FOUC) -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
   </head>
 
   <body
-    class="font-sans text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900"
+    class="font-sans text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-950 antialiased selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100 transition-colors duration-300"
   >
     <slot />
   </body>
@@ -62,6 +74,13 @@ const { title, description } = Astro.props;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Smooth transition for dark mode color changes */
+  *, *::before, *::after {
+    transition-property: background-color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
   }
 
   details > summary {

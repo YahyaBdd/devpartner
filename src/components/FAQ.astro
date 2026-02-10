@@ -23,23 +23,23 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="py-24 border-t border-slate-100 bg-white">
+<section id="faq" class="py-24 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <h2 class="text-3xl font-bold mb-12 text-center tracking-tight">
+    <h2 class="text-3xl font-bold mb-12 text-center tracking-tight dark:text-white">
       Common Questions
     </h2>
 
     <div class="space-y-4">
       {
         faqs.map((faq) => (
-          <details class="group bg-slate-50 p-6 rounded-xl border border-slate-200 open:ring-2 open:ring-blue-500/20 open:bg-white transition-all duration-300">
-            <summary class="flex justify-between items-center font-bold cursor-pointer text-slate-900 text-lg">
+          <details class="group bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 open:ring-2 open:ring-blue-500/20 open:bg-white dark:open:bg-slate-800 transition-all duration-300">
+            <summary class="flex justify-between items-center font-bold cursor-pointer text-slate-900 dark:text-white text-lg">
               <span>{faq.question}</span>
               <span class="transition transform group-open:rotate-180 text-blue-600">
                 <i class="fas fa-chevron-down" />
               </span>
             </summary>
-            <div class="text-slate-600 mt-4 leading-relaxed border-t border-slate-100 pt-4 animate-fadeIn">
+            <div class="text-slate-600 dark:text-slate-300 mt-4 leading-relaxed border-t border-slate-100 dark:border-slate-700 pt-4 animate-fadeIn">
               {faq.answer}
             </div>
           </details>

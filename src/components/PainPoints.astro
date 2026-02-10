@@ -2,21 +2,21 @@
 const painPoints = [
   {
     icon: 'fa-ban',
-    colorClass: 'bg-red-100 text-red-600',
+    colorClass: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400',
     title: 'Turning Down Clients',
     description:
       "You're forced to say \"no\" to new projects because your in-house team is at max capacity.",
   },
   {
     icon: 'fa-chart-line',
-    colorClass: 'bg-orange-100 text-orange-600',
+    colorClass: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400',
     title: 'Margin Compression',
     description:
       'Hiring senior local developers in Europe eats into your project margins significantly.',
   },
   {
     icon: 'fa-bed',
-    colorClass: 'bg-purple-100 text-purple-600',
+    colorClass: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400',
     title: 'Communication Lag',
     description:
       'Tried outsourcing to Asia? Waking up to messages sent 8 hours ago kills project momentum.',
@@ -24,13 +24,13 @@ const painPoints = [
 ];
 ---
 
-<section class="py-20 bg-white">
+<section class="py-20 bg-white dark:bg-slate-950">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
         Is Your Agency Facing These Bottlenecks?
       </h2>
-      <p class="text-slate-600 max-w-2xl mx-auto">
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
         Great agencies often stall because fulfillment can't keep up with sales.
       </p>
     </div>
@@ -38,16 +38,16 @@ const painPoints = [
     <div class="grid md:grid-cols-3 gap-8">
       {
         painPoints.map((item) => (
-          <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition group">
+          <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition group">
             <div
               class={`w-12 h-12 ${item.colorClass} rounded-xl flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition`}
             >
               <i class={`fas ${item.icon}`} />
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 tracking-tight">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">
               {item.title}
             </h3>
-            <p class="text-slate-600">{item.description}</p>
+            <p class="text-slate-600 dark:text-slate-300">{item.description}</p>
           </div>
         ))
       }

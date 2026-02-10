@@ -2,15 +2,15 @@
 const categories = [
   {
     icon: 'fab fa-react',
-    iconBg: 'bg-blue-50 text-blue-600',
-    hoverBorder: 'hover:border-blue-300',
+    iconBg: 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
+    hoverBorder: 'hover:border-blue-300 dark:hover:border-blue-600',
     title: 'Frontend',
     items: ['React.js / Next.js', 'Vue.js / Nuxt', 'Tailwind CSS / SCSS', 'TypeScript'],
   },
   {
     icon: 'fab fa-node-js',
-    iconBg: 'bg-green-50 text-green-600',
-    hoverBorder: 'hover:border-green-300',
+    iconBg: 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400',
+    hoverBorder: 'hover:border-green-300 dark:hover:border-green-600',
     title: 'Backend',
     items: [
       'Node.js / Express',
@@ -21,15 +21,15 @@ const categories = [
   },
   {
     icon: 'fas fa-server',
-    iconBg: 'bg-orange-50 text-orange-600',
-    hoverBorder: 'hover:border-orange-300',
+    iconBg: 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400',
+    hoverBorder: 'hover:border-orange-300 dark:hover:border-orange-600',
     title: 'Infrastructure',
     items: ['PostgreSQL / MongoDB', 'AWS / DigitalOcean', 'Docker / CI/CD Pipelines', 'Firebase'],
   },
   {
     icon: 'fas fa-shopping-cart',
-    iconBg: 'bg-purple-50 text-purple-600',
-    hoverBorder: 'hover:border-purple-300',
+    iconBg: 'bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400',
+    hoverBorder: 'hover:border-purple-300 dark:hover:border-purple-600',
     title: 'Platforms',
     items: [
       'WordPress (Custom Themes)',
@@ -41,13 +41,13 @@ const categories = [
 ];
 ---
 
-<section id="services" class="py-20 bg-slate-50">
+<section id="services" class="py-20 bg-slate-50 dark:bg-slate-900">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
         Full Stack Capabilities
       </h2>
-      <p class="text-slate-600">
+      <p class="text-slate-600 dark:text-slate-400">
         Modern, scalable, and clean code that your internal team will
         appreciate.
       </p>
@@ -57,15 +57,15 @@ const categories = [
       {
         categories.map((cat) => (
           <div
-            class={`bg-white p-6 rounded-xl shadow-sm border border-slate-200 ${cat.hoverBorder} transition`}
+            class={`bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 ${cat.hoverBorder} transition`}
           >
             <div
               class={`w-12 h-12 ${cat.iconBg} rounded-lg flex items-center justify-center mb-4 text-2xl`}
             >
               <i class={cat.icon} />
             </div>
-            <h3 class="font-bold text-slate-900 text-lg mb-2">{cat.title}</h3>
-            <ul class="text-slate-600 space-y-2 text-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-lg mb-2">{cat.title}</h3>
+            <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm">
               {cat.items.map((item) => (
                 <li>• {item}</li>
               ))}
