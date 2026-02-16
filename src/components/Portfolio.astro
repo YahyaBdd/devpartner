@@ -1,0 +1,447 @@
+---
+const projects = [
+  {
+    image: '/visionyse.webp',
+    badge: 'SaaS',
+    badgeClass:
+      'bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-600 border border-slate-200',
+    location: 'Marseille, France',
+    title: 'Visionyze',
+    descKey: 'portfolio.project1.description',
+    description:
+      'I worked with Visionyze to develop a training center management SAAS for one of their clients',
+    confidential: true,
+    links: [],
+    tech: ['NodeJS', 'NextJS', 'PostgresDB'],
+  },
+  {
+    image: '/nuremberg.webp',
+    badge: 'Partnership',
+    badgeClass:
+      'bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white border-2 border-yellow-300 shadow-lg shadow-yellow-500/50 animate-pulse',
+    badgeIcon: true,
+    location: 'Nürnberg, Germany',
+    title: 'Webdesign Agentur Nürnberg',
+    descKey: 'portfolio.project2.description',
+    description:
+      "Johannes was one of my first and loyal clients, and we've worked so far on over 9 projects",
+    confidential: false,
+    links: [
+      { url: 'https://autohaus-stahmer.de/', label: 'autohaus-stahmer.de' },
+      { url: 'https://www.pgl-obermeitingen.de/', label: 'pgl-obermeitingen.de' },
+      { url: 'https://orso-gmbh.de/', label: 'orso-gmbh.de' },
+      { url: 'https://sb-nbg.de', label: 'sb-nbg.de' },
+    ],
+    tech: ['Wordpress', 'Shopify', 'PHP'],
+  },
+  {
+    image: '/ultrapc.webp',
+    badge: 'e-commerce',
+    badgeClass:
+      'bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-600 border border-slate-200',
+    location: 'Marrakesh, Morocco',
+    title: 'ultrapc.ma',
+    descKey: 'portfolio.project3.description',
+    description:
+      "UltraPC is one of Morocco's largest gaming PC suppliers, and I had the pleasure of working on their store.",
+    confidential: false,
+    links: [{ url: 'https://www.ultrapc.ma/', label: 'ultrapc.ma' }],
+    tech: ['Laravel', 'PrestaShop', 'Stripe'],
+  },
+];
+---
+
+<section id="portfolio" class="relative border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950">
+  <!-- Header -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-4">
+    <div class="max-w-2xl">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mb-4"
+      >
+        <span
+          class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest"
+          data-i18n="portfolio.badge"
+          >White Label Portfolio</span
+        >
+      </div>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="portfolio.title">
+        Recent Work Deliverables
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg" data-i18n="portfolio.subtitle">
+        Here are examples of recent systems built for agencies arround Europe.
+      </p>
+    </div>
+  </div>
+
+  <!-- GSAP Gallery -->
+  <div class="portfolio-gallery">
+    <ul class="portfolio-cards">
+      {
+        projects.map((project) => (
+          <li>
+            <div class="portfolio-card">
+              <div class="portfolio-card__image">
+                <img src={project.image} alt={project.title} />
+                <div class={`portfolio-card__badge ${project.badgeClass}`}>
+                  {project.badgeIcon ? (
+                    <span class="flex items-center gap-1">
+                      <i class="fas fa-star animate-spin" style="animation-duration: 2s;" />
+                      {project.badge}
+                      <i class="fas fa-sparkles" />
+                    </span>
+                  ) : (
+                    project.badge
+                  )}
+                </div>
+              </div>
+              <div class="portfolio-card__content">
+                <div class="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
+                  <i class="fas fa-map-pin text-blue-500" />
+                  <span>{project.location}</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">
+                  {project.title}
+                </h3>
+                <p class="text-slate-500 dark:text-slate-400 text-xs mt-1.5 mb-2 line-clamp-2" data-i18n={project.descKey}>
+                  {project.description}
+                </p>
+
+                {project.confidential ? (
+                  <div class="flex items-center gap-2 text-xs text-slate-400 mb-2 cursor-not-allowed" title="Confidential project">
+                    <i class="fas fa-lock" />
+                    <span class="italic" data-i18n="portfolio.confidential">Confidential</span>
+                  </div>
+                ) : (
+                  <div class="flex flex-wrap gap-1.5 text-xs mb-2">
+                    {project.links.map((link) => (
+                      <a href={link.url} target="_blank" class="flex items-center gap-1 text-blue-500 hover:text-blue-600 transition">
+                        <i class="fas fa-external-link-alt text-[10px]" />
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-slate-400">
+                  {project.tech.map((t) => (
+                    <span class="bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="portfolio-actions">
+      <button class="portfolio-prev" aria-label="Previous project">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="portfolio-next" aria-label="Next project">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="portfolio-drag-proxy"></div>
+</section>
+
+<style>
+  .portfolio-gallery {
+    position: relative;
+    width: 100%;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 600px;
+    overflow: hidden;
+  }
+
+  .portfolio-cards {
+    position: absolute;
+    width: 24rem;
+    height: 32rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin: 0;
+  }
+
+  .portfolio-cards li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 24rem;
+    height: 32rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .portfolio-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.dark) .portfolio-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .portfolio-card__image {
+    position: relative;
+    width: 100%;
+    height: 55%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .portfolio-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .portfolio-card__badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .portfolio-card__content {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .portfolio-actions {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 10;
+  }
+
+  .portfolio-prev,
+  .portfolio-next {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+  }
+
+  .portfolio-prev:hover,
+  .portfolio-next:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+    transform: scale(1.1);
+  }
+
+  :global(.dark) .portfolio-prev,
+  :global(.dark) .portfolio-next {
+    border-color: #475569;
+    background: rgba(30, 41, 59, 0.9);
+    color: #94a3b8;
+  }
+
+  :global(.dark) .portfolio-prev:hover,
+  :global(.dark) .portfolio-next:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+  }
+
+  .portfolio-drag-proxy {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  @media (max-width: 640px) {
+    .portfolio-cards {
+      width: 18rem;
+      height: 26rem;
+    }
+    .portfolio-cards li {
+      width: 18rem;
+      height: 26rem;
+    }
+    .portfolio-gallery {
+      height: 500px;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const gsap = window.gsap;
+    const Draggable = window.Draggable;
+
+    if (!gsap || !Draggable) return;
+
+    gsap.registerPlugin(Draggable);
+
+    // Get the 3 original cards and clone them to produce enough DOM nodes
+    // for the seamless loop algorithm (needs ~12+ items to compute valid durations)
+    const originals = gsap.utils.toArray('.portfolio-cards li');
+    if (!originals.length) return;
+
+    const parent = originals[0].parentNode;
+    const totalNeeded = 12;
+    for (let i = originals.length; i < totalNeeded; i++) {
+      const clone = originals[i % originals.length].cloneNode(true);
+      parent.appendChild(clone);
+    }
+
+    const cards = gsap.utils.toArray('.portfolio-cards li');
+
+    // Set initial state — all cards hidden off to the right
+    gsap.set(cards, { xPercent: 400, opacity: 0, scale: 0 });
+
+    const spacing = 0.1,
+      snapTime = gsap.utils.snap(spacing),
+      animateFunc = (element) => {
+        const tl = gsap.timeline();
+        tl.fromTo(
+          element,
+          { scale: 0, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            zIndex: 100,
+            duration: 0.5,
+            yoyo: true,
+            repeat: 1,
+            ease: 'power1.in',
+            immediateRender: false,
+          }
+        ).fromTo(
+          element,
+          { xPercent: 400 },
+          { xPercent: -400, duration: 1, ease: 'none', immediateRender: false },
+          0
+        );
+        return tl;
+      },
+      seamlessLoop = buildSeamlessLoop(cards, spacing, animateFunc),
+      playhead = { offset: 0 },
+      wrapTime = gsap.utils.wrap(0, seamlessLoop.duration()),
+      scrub = gsap.to(playhead, {
+        offset: 0,
+        onUpdate() {
+          seamlessLoop.time(wrapTime(playhead.offset));
+        },
+        duration: 0.5,
+        ease: 'power3',
+        paused: true,
+      });
+
+    function scrubTo(offset) {
+      scrub.vars.offset = offset;
+      scrub.invalidate().restart();
+    }
+
+    function snapTo(offset) {
+      scrubTo(snapTime(offset));
+    }
+
+    // Show the first card centered at full opacity/scale
+    scrubTo(spacing);
+
+    // Prev / Next buttons
+    document
+      .querySelector('.portfolio-next')
+      .addEventListener('click', () =>
+        snapTo(scrub.vars.offset + spacing)
+      );
+    document
+      .querySelector('.portfolio-prev')
+      .addEventListener('click', () =>
+        snapTo(scrub.vars.offset - spacing)
+      );
+
+    // Draggable for touch / mouse on the cards area
+    Draggable.create('.portfolio-drag-proxy', {
+      type: 'x',
+      trigger: '.portfolio-cards',
+      onPress() {
+        this.startOffset = scrub.vars.offset;
+      },
+      onDrag() {
+        scrubTo(this.startOffset + (this.startX - this.x) * 0.001);
+      },
+      onDragEnd() {
+        snapTo(scrub.vars.offset);
+      },
+    });
+
+    function buildSeamlessLoop(items, spacing, animateFunc) {
+      let overlap = Math.ceil(1 / spacing),
+        startTime = items.length * spacing + 0.5,
+        loopTime = (items.length + overlap) * spacing + 1,
+        rawSequence = gsap.timeline({ paused: true }),
+        seamlessLoop = gsap.timeline({
+          paused: true,
+          repeat: -1,
+          onRepeat() {
+            this._time === this._dur && (this._tTime += this._dur - 0.01);
+          },
+        }),
+        l = items.length + overlap * 2,
+        time,
+        i,
+        index;
+
+      for (i = 0; i < l; i++) {
+        index = i % items.length;
+        time = i * spacing;
+        rawSequence.add(animateFunc(items[index]), time);
+        i <= items.length && seamlessLoop.add('label' + i, time);
+      }
+
+      rawSequence.time(startTime);
+      seamlessLoop
+        .to(rawSequence, {
+          time: loopTime,
+          duration: loopTime - startTime,
+          ease: 'none',
+        })
+        .fromTo(
+          rawSequence,
+          { time: overlap * spacing + 1 },
+          {
+            time: startTime,
+            duration: startTime - (overlap * spacing + 1),
+            immediateRender: false,
+            ease: 'none',
+          }
+        );
+      return seamlessLoop;
+    }
+  })();
+</script>

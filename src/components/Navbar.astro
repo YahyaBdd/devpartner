@@ -1,0 +1,194 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+const whatsappBase = 'https://wa.me/212702002742';
+---
+
+<nav
+  class="fixed w-full z-50 transition-all duration-300 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800"
+  id="navbar"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+      <!-- Logo -->
+      <div
+        class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+        id="logo-home"
+      >
+        <div
+          class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+        >
+          &lt;/&gt;
+        </div>
+        <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white"
+          >DevPartner<span class="text-blue-500">.ma</span></span
+        >
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a
+          href="#benefits"
+          class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.whyMorocco"
+          >Why Morocco?</a
+        >
+        <a
+          href="#services"
+          class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.services"
+          >Services</a
+        >
+        <a
+          href="#portfolio"
+          class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.work"
+          >Work</a
+        >
+        <a
+          href="#process"
+          class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition"
+          data-i18n="nav.process"
+          >Process</a
+        >
+        <!-- Language Switcher -->
+        <LanguageSwitcher />
+        <!-- Dark Mode Toggle -->
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          aria-label="Toggle dark mode"
+        >
+          <i class="fas fa-moon text-lg dark:hidden"></i>
+          <i class="fas fa-sun text-lg hidden dark:inline"></i>
+        </button>
+        <a
+          href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20partner%20with%20you%20for%20my%20agency%27s%20development%20needs`}
+          target="_blank"
+          class="px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-full hover:bg-blue-600 dark:hover:bg-blue-400 dark:hover:text-white transition shadow-lg shadow-blue-500/20"
+          data-i18n="nav.partnerWithMe"
+        >
+          Partner With Me
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button
+          id="mobile-menu-btn"
+          class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white focus:outline-none"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 absolute w-full"
+  >
+    <div class="px-4 pt-2 pb-6 space-y-1">
+      <a
+        href="#benefits"
+        class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.whyMorocco"
+        >Why Morocco?</a
+      >
+      <a
+        href="#services"
+        class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.services"
+        >Services</a
+      >
+      <a
+        href="#portfolio"
+        class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.work"
+        >Work</a
+      >
+      <a
+        href="#process"
+        class="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-md"
+        data-i18n="nav.process"
+        >Process</a
+      >
+      <!-- Mobile Language Switcher -->
+      <div class="px-3 py-3 flex items-center gap-3">
+        <i class="fas fa-globe text-slate-500"></i>
+        <button data-lang-btn="en" class="flex items-center gap-1.5 px-2 py-1 text-sm font-bold rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300"><span class="fi fi-gb"></span> EN</button>
+        <button data-lang-btn="nl" class="flex items-center gap-1.5 px-2 py-1 text-sm font-bold rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300"><span class="fi fi-nl"></span> NL</button>
+        <button data-lang-btn="de" class="flex items-center gap-1.5 px-2 py-1 text-sm font-bold rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300"><span class="fi fi-de"></span> DE</button>
+      </div>
+      <!-- Mobile Dark Mode Toggle -->
+      <button
+        id="theme-toggle-mobile"
+        class="w-full text-left px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md flex items-center gap-2"
+      >
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:inline"></i>
+        <span class="dark:hidden" data-i18n="nav.darkMode">Dark Mode</span>
+        <span class="hidden dark:inline" data-i18n="nav.lightMode">Light Mode</span>
+      </button>
+      <a
+        href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20book%20a%20discovery%20call%20with%20you`}
+        target="_blank"
+        class="block px-3 py-3 text-base font-bold text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-md"
+        data-i18n="nav.bookDiscoveryCall"
+        >Book Discovery Call</a
+      >
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const logo = document.getElementById('logo-home');
+  const navbar = document.getElementById('navbar');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  logo?.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar?.classList.add('shadow-md');
+    } else {
+      navbar?.classList.remove('shadow-md');
+    }
+  });
+
+  // Dark mode toggle
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+
+  // Mobile language switcher buttons
+  const mobileLangBtns = document.querySelectorAll('#mobile-menu [data-lang-btn]');
+  const flagClasses: Record<string, string> = { en: 'fi fi-gb', nl: 'fi fi-nl', de: 'fi fi-de' };
+  mobileLangBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang-btn');
+      if (lang && (window as any).__i18n) {
+        (window as any).__i18n.setLanguage(lang);
+        // Also update the desktop language switcher display
+        const currentFlag = document.getElementById('lang-current-flag');
+        const currentCode = document.getElementById('lang-current-code');
+        if (currentFlag) {
+          currentFlag.className = flagClasses[lang] || 'fi fi-gb';
+          currentFlag.style.fontSize = '1rem';
+        }
+        if (currentCode) currentCode.textContent = lang.toUpperCase();
+      }
+    });
+  });
+</script>

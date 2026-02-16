@@ -1,0 +1,45 @@
+---
+const whatsappBase = 'https://wa.me/212702002742';
+---
+
+<section id="contact" class="py-24 bg-slate-900 dark:bg-slate-900 text-white text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight" data-i18n="cta.title">
+      Stop leaving revenue on the table.
+    </h2>
+    <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto" data-i18n="cta.subtitle">
+      Let's schedule a 15-minute intro call to see if we are a technical fit for
+      your next project.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+      <a
+        href={`${whatsappBase}?text=Hi%2C%20I%27d%20like%20to%20book%20a%2015-minute%20intro%20call`}
+        target="_blank"
+        class="px-8 py-4 bg-brand-accent hover:bg-cyan-600 text-white font-bold rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20"
+        data-i18n="cta.bookCall"
+      >
+        Book Intro Call
+      </a>
+      <button
+        class="px-8 py-4 bg-transparent border border-slate-600 text-white font-bold rounded-lg text-lg hover:bg-slate-800 transition-all"
+        data-i18n="cta.emailMe"
+      >
+        Email Me
+      </button>
+    </div>
+
+    <!-- Trust Badges -->
+    <div
+      class="flex flex-col sm:flex-row justify-center gap-6 sm:gap-12 text-slate-400 text-sm font-medium"
+    >
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-check-circle text-green-500 text-lg"></i> <span data-i18n="cta.freeConsultation">Free Consultation</span>
+      </div>
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-check-circle text-green-500 text-lg"></i> <span data-i18n="cta.confidentiality">Confidentiality
+        Guaranteed</span>
+      </div>
+    </div>
+  </div>
+</section>
