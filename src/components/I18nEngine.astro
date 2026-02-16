@@ -10,11 +10,12 @@
 import en from '../i18n/en.json';
 import nl from '../i18n/nl.json';
 import de from '../i18n/de.json';
+import lb from '../i18n/lb.json';
 ---
 
-<script is:inline define:vars={{ en, nl, de }}>
+<script is:inline define:vars={{ en, nl, de, lb }}>
 (function () {
-  const translations = { en, nl, de };
+  const translations = { en, nl, de, lb };
   const supportedLangs = Object.keys(translations);
 
   function detectLanguage() {
