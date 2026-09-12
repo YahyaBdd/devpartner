@@ -1,0 +1,35 @@
+---
+import {contact} from './data';
+import Hero from './Hero.astro';
+import Section from './Section.astro';
+import Copy from './Copy.astro';
+import I18nEngine from '../components/I18nEngine.astro';
+import './styles.css';
+import en from '../i18n/en.json';
+const order = ['process','services','work','benefits','engagement','about','testimonials','faq'];
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={en["hero.description"]}/><title>DevPartner — White-label full-stack development</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet"/></head>
+<body class="blue-circuit">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header"><a href="#top" class="brand" aria-label="DevPartner home"><span class="brand-mark">d/p</span><span>devpartner<span class="brand-period">.</span></span></a><nav class="main-nav" aria-label="Main navigation"><a href="#portfolio"><Copy k="nav.work" tag="span"/></a><a href="#services"><Copy k="nav.services" tag="span"/></a><a href="#process"><Copy k="nav.process" tag="span"/></a></nav><div class="nav-actions"><select id="language" aria-label="Language"><option value="en">EN</option><option value="de">DE</option><option value="nl">NL</option></select><a class="nav-cta" href="#contact"><Copy k="nav.partnerWithMe" tag="span"/> ↗</a><button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" data-i18n="ui.menu">{en["ui.menu"]}</button></div><nav id="mobile-nav" class="mobile-nav" hidden aria-label="Mobile navigation"><a href="#portfolio"><Copy k="nav.work" tag="span"/></a><a href="#services"><Copy k="nav.services" tag="span"/></a><a href="#process"><Copy k="nav.process" tag="span"/></a><a href="#benefits"><Copy k="nav.whyMorocco" tag="span"/></a><a href="#contact"><Copy k="nav.partnerWithMe" tag="span"/> ↗</a></nav></header>
+<main id="main"><Hero/><div class="trust-strip"><span>Good company. Great collaborations.</span><b>visionyze</b><b>webdesign nürnberg</b><b>ultra<span class="pc">PC</span></b><span>Independent talent.<br/>European partnerships.</span></div>{order.map((kind,i)=><Section kind={kind} number={String(i+1).padStart(2,"0")}/>)}<section id="contact" class="section contact"><span class="contact-note">YOUR NEXT CHAPTER STARTS WITH A CONVERSATION.</span><Copy k="cta.title" tag="h2"/><div class="contact-bottom"><Copy k="cta.subtitle"/><a class="button" href={contact()} target="_blank" rel="noopener noreferrer"><Copy k="cta.bookCall" tag="span"/> ↗</a></div><div class="contact-assurance"><Copy k="cta.freeConsultation" tag="span"/><span>·</span><Copy k="cta.confidentiality" tag="span"/></div></section></main>
+<footer><a href="#top" class="brand">devpartner.</a><Copy k="footer.location" tag="span"/><a href="https://www.linkedin.com/in/yahya-bdd/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><Copy k="footer.copyright" tag="small"/></footer>
+
+<I18nEngine/>
+<script>
+import {services} from './data';
+function t(key:string){const api=(window as any).__i18n;return api.translations[api.getLanguage()][key];}
+function menuLabel(open:boolean){toggle.dataset.i18n=open?'ui.close':'ui.menu';toggle.textContent=t(toggle.dataset.i18n);}
+const lang=document.querySelector<HTMLSelectElement>('#language')!;
+document.addEventListener('languageChanged',(event)=>{lang.value=(event as CustomEvent).detail.lang;});
+lang.addEventListener('change',()=>{(window as any).__i18n.setLanguage(lang.value)});
+const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle')!;
+const menu=document.querySelector<HTMLElement>('#mobile-nav')!;
+toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.hidden=!open;menuLabel(open)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false');menuLabel(false)}));
+const tabs=[...document.querySelectorAll<HTMLButtonElement>('[data-capability]')];
+function activateTab(i:number){tabs.forEach((t,n)=>{t.setAttribute('aria-selected',String(n===i));t.tabIndex=n===i?0:-1});const panel=document.querySelector('#capability-panel')!;panel.setAttribute('aria-labelledby',`cap-${i}`);panel.replaceChildren(...services[i].items.map(text=>{const s=document.createElement('span');s.textContent=text;return s}));}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activateTab(i));tab.addEventListener('keydown',e=>{let next=i;if(e.key==='ArrowRight')next=(i+1)%tabs.length;else if(e.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;else return;e.preventDefault();activateTab(next);tabs[next].focus()})});
+</script>
+</body></html>

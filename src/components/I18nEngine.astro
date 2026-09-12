@@ -55,6 +55,10 @@ import de from '../i18n/de.json';
       }
     });
 
+    // Keep search/social summaries aligned with the selected language.
+    var description = document.querySelector('meta[name="description"]');
+    if (description && t['meta.description']) description.setAttribute('content', t['meta.description']);
+
     // Update html lang attribute
     document.documentElement.lang = lang;
 
